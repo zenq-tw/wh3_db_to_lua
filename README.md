@@ -1,4 +1,4 @@
-# TW Utility: RFPM database to lua table 
+# TW Utility: RPFM database to lua table 
 It is a small utility that allow extract db tables from game `.pack` files and convert it to `.lua` script that you can `require` in your mods.
 
 ## Requirements
