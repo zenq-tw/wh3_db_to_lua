@@ -55,6 +55,12 @@ def _init_cli() -> argparse.ArgumentParser:
         help='add `return` statement to converted files (so you can `require` table file)',
     )
 
+    cli.add_argument(
+        '--md5',
+        action='store_true',
+        help='calculate md5_checksum. WARNING: this will lead to different output table structure',
+    )
+
     return cli
 
 
@@ -78,7 +84,14 @@ with tempfile.TemporaryDirectory() as tmpdir_path:
     )
     print('------------ Extracted --------------')
 
-    tsv_to_lua.execute(files, dest=args.dest, should_replace=True, map_columns=args.map_columns, add_return=args.add_return)
+    tsv_to_lua.execute(
+        files,
+        dest=args.dest,
+        should_replace=True,
+        map_columns=args.map_columns,
+        add_return=args.add_return,
+        calculate_md5=args.md5,
+    )
 
     print('------------ Converted --------------')
 

@@ -12,11 +12,11 @@ It is a small utility that allow extract db tables from game `.pack` files and c
 ## Usage
 
 Two options: 
-1. with prebuild `wh3_export_tables.exe`
+1. with prebuild `wh3_db_to_lua.exe`
 2. with sources `python -m wh3_db_to_lua` (inside repository directory)
 
   ```
-  usage: wh3_export_tables.exe [-h] -t <table_name> -r <path> -d <path> [--map-columns] [--add-return]
+  usage: wh3_export_tables.exe [-h] -t <table_name> -r <path> -d <path> [--map-columns] [--add-return] [--md5]
 
   options:
     -h, --help            show this help message and exit
@@ -28,6 +28,7 @@ Two options:
                           destination directory where store results
     --map-columns         make rows as table<Column, Field> (by default they are table<Number, Field>)
     --add-return          add `return` statement to converted files (so you can `require` table file)
+    --md5                 calculate md5_checksum. WARNING: this will lead to different output table structure
   ```
 
   > You can interact in the same way with package scripts if you need more detailed contol:
@@ -47,7 +48,7 @@ Two options:
   > ```
   > 2. `python tsv_to_lua.py`
   > ```
-  > usage: tsv_to_lua.py [-h] (-f <path> | -d <path>) [--dest <path> | --replace] [--map-columns] [--add-return]
+  >  usage: tsv_to_lua.py [-h] (-f <path> | -d <path>) [--dest <path> | --replace] [--map-columns] [--add-return] [--md5]
   >
   >  options:
   >    -h, --help            show this help message and exit
@@ -59,9 +60,10 @@ Two options:
   >    --replace             replace original files with converted versions
   >    --map-columns         make rows as table<Column, Field> (by default they are table<Number, Field>)
   >    --add-return          add `return` statement to converted files (so you can `require` table file)
+  >    --md5                 calculate md5_checksum. WARNING: this will lead to different output table structure
   > ```
 
-## Building
+## Build
 
 Requirements:
 * Python 3 (I used 3.10, didn't test on older versions)
